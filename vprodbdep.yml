@@ -14,15 +14,6 @@ spec:
       labels:
         app: vprodb
     spec:
-      affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: zone
-            operator: In
-            values:
-            -  us-east-2a 
       containers:
       - name: vprodb
         image: vprofile/vprofiledb
@@ -42,7 +33,7 @@ spec:
                name: app-secret
                key: db-pass
       nodeSelector:
-        zone: us-east-1a
+        zone: us-east-2a
       volumes:
         - name: vpro-db-data
           # This AWS EBS volume must already exist.
