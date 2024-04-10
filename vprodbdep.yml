@@ -14,6 +14,15 @@ spec:
       labels:
         app: vprodb
     spec:
+      affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: zone
+            operator: In
+            values:
+            -  us-east-2a 
       containers:
       - name: vprodb
         image: vprofile/vprofiledb
